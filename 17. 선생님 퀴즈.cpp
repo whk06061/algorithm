@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-	int num, n, i, j, sum=0, res[11];
+	int num, n, i, j, sum=0;
 	//freopen("input.txt","rt",stdin);
 	scanf("%d",&num);
 	for(i=1;i<=num;i++){
@@ -12,11 +12,7 @@ int main(){
 			sum += j;
 		}
 		scanf("%d",&n);
-		if(sum == n) res[i] = 1;
-		else res[i] = 0;
-	}
-	for(i=1;i<=num;i++){
-		if(res[i]==1) printf("YES\n");
+		if(sum == n) printf("YES\n");
 		else printf("NO\n");
 	}
 	return 0;
