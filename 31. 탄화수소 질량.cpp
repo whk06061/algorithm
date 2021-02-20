@@ -5,7 +5,7 @@ int main(){
 	int i, a=0, b=0, index;
 	char input[10];
 	scanf("%s", input);
-	for(i=1; input[i] != 72; i++){
+	for(i=1; input[i] != 'H'; i++){
 		a = a*10 + input[i]-48;
 		
 	}
