@@ -7,7 +7,7 @@ int main() {
 	int  n, i, x=2, y=1, tmp, cnt=0;
 	scanf("%d", &n);
 	while(n-y>0){
-		tmp = n-y;
+		tmp = n-y; //(x) + (x+1) + (x+2) ... = n 의 성질을 이용 
 		if((tmp)%x==0){
 			for(i=0; i<x-1; i++){
 				printf("%d + ", tmp/x+i);
