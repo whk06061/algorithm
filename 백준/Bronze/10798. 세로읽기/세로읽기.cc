@@ -17,8 +17,7 @@ int main() {
     // 출력하기
     for (int i = 0; i < 15; ++i) {
         for (int j = 0; j < SIZE; ++j) {
-            if (v[j].size() > i)
-                cout << v[j][i];
+            if (v[j][i]) cout << v[j][i];
         }
     }
 }
