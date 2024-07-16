@@ -9,16 +9,13 @@ vector<pair<char, int>> ants; // 최종 결과
 
 int main() {
     cin >> n1 >> n2;
-    vector<char> tmp1;
+    // 두 그룹 합치기
     for (int i = 0; i < n1; ++i) {
         char x;
         cin >> x;
-        tmp1.push_back(x);
+        ants.push_back({x, 1});
     }
-    // 1그룹 역순으로 넣기 & 두 그룹 합치기
-    for (int i = n1 - 1; i >= 0; --i) {
-        ants.push_back({tmp1[i], 1});
-    }
+    reverse(ants.begin(), ants.end());
     for (int i = 0; i < n2; ++i) {
         char x;
         cin >> x;
@@ -30,10 +27,7 @@ int main() {
         t--;
         for (int i = 0; i < n1 + n2 - 1; ++i) {
             if (ants[i].second == 1 && ants[i + 1].second == 2) {
-                char tmp2;
-                tmp2 = ants[i].first;
-                ants[i] = {ants[i + 1].first, 2};
-                ants[i + 1] = {tmp2, 1};
+                swap(ants[i], ants[i + 1]);
                 ++i;
             }
         }
