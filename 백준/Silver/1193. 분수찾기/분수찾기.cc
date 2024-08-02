@@ -3,24 +3,23 @@
 
 using namespace std;
 
-vector<long> ssum = {0, 1};
-int n, idx, w = 1;
+vector<int> ssum = {0, 1};
+int n, i, w = 1;
 
 int main() {
-    while (ssum.back() + w <= 20000000) {
+    while (ssum.back() + w <= 10000000) {
         ssum.push_back(ssum.back() + w);
         w++;
     }
 
     cin >> n;
 
-    for (int i = 0; i < ssum.size(); ++i) {
+    for (i = 0; i < ssum.size(); ++i) {
         if (n < ssum[i]) {
-            idx = i - 1;
             break;
         }
     }
-
+    int idx = i - 1;
     int d = n - ssum[idx];
 
     if (idx % 2 == 0) {
