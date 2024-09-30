@@ -4,12 +4,15 @@
 
 using namespace std;
 
-bool check_change(string a, string b) {
-    int count = 0;
+bool word_check(string a, string b) {
+    bool same = true;
     for (int i = 0; i < a.size(); ++i) {
-        if (a[i] != b[i]) count++;
+        if (a[i] != b[i]) {
+            if (!same) return false;
+            same = false;
+        }
     }
-    return count == 1;
+    return !same;
 }
 
 int solution(string begin, string target, vector<string> words) {
@@ -22,7 +25,7 @@ int solution(string begin, string target, vector<string> words) {
         int count = q.front().second;
         q.pop();
         for (int i = 0; i < words.size(); ++i) {
-            if (check_change(word, words[i])) {
+            if (word_check(word, words[i])) {
                 visited[i] = true;
                 if (target == words[i]) return count + 1;
                 q.push({words[i], count + 1});
