@@ -6,17 +6,14 @@ class Solution {
         var answer = 0
         val q: Queue<Pair<Int, Int>> = LinkedList()
         q.add(Pair(numbers[0], 0))
-        q.add(Pair(-1 * numbers[0], 0))
+        q.add(Pair(-numbers[0], 0))
         while (q.isNotEmpty()) {
-            val current = q.poll()
-            val value = current.first
-            val index = current.second
-            if (index == numbers.size - 1) {
-                if (value == target) answer++
-            } else {
-                q.add(Pair(value + numbers[index + 1], index + 1))
-                q.add(Pair(value - numbers[index + 1], index + 1))
-            }
+            val (temp, idx) = q.poll()
+            val nextIdx = idx + 1
+            if (nextIdx < numbers.size) {
+                q.add(Pair(temp + numbers[nextIdx], nextIdx))
+                q.add(Pair(temp - numbers[nextIdx], nextIdx))
+            } else if (temp == target) answer++
         }
         return answer
     }
