@@ -10,15 +10,12 @@ class Solution {
         q.add(Pair(numbers[0], 0))
         
         while(q.isNotEmpty()){
-            val current = q.poll()
-            val value = current.first
-            val nextIndex = current.second + 1
-            if(nextIndex == numbers.size){
-                if(value == target) answer ++
-            }else{
-                q.add(Pair(value - numbers[nextIndex], nextIndex))
-                q.add(Pair(value + numbers[nextIndex], nextIndex))
-            }
+            val (temp, index) = q.poll()
+            val nextIndex = index + 1
+            if(nextIndex < numbers.size){
+                q.add(Pair(temp - numbers[nextIndex], nextIndex))
+                q.add(Pair(temp + numbers[nextIndex], nextIndex))
+            } else if(temp == target) answer ++
         }
         
         return answer
