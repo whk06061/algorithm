@@ -25,7 +25,7 @@ class Solution {
         var temp = s
         repeat(s.length) {
             val first = temp.first()
-            temp = temp.substring(1).plus(first)
+            temp = temp.drop(1).plus(first)
             if (check(temp)) answer++
         }
 
