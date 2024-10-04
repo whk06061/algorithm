@@ -1,14 +1,14 @@
 class Solution {
 
-    private var count = 0
+    private var count = -1
     private var answer = 0
 
     fun dfs(alphabets: List<Char>, word: String, target: String, idx: Int) {
+        count++
         if (word == target){
             answer = count
             return
         }
-        count++
         if (word.length == 5)  return
         for (i in idx until 5) {
             dfs(alphabets, word + alphabets[i], target, idx)
