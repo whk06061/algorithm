@@ -1,24 +1,23 @@
 class Solution {
 
-    private var count = -1
     private var answer = 0
+    private var count = -1
 
-    fun dfs(alphabets: List<Char>, word: String, target: String, idx: Int) {
+    private fun dfs(target: String, word: String, idx: Int, alphabets: List<Char>) {
         count++
-        if (word == target){
+        if (target == word) {
             answer = count
             return
         }
-        if (word.length == 5)  return
-        for (i in idx until 5) {
-            dfs(alphabets, word + alphabets[i], target, idx)
+        if (word.length == 5) return
+        for(i in idx until 5){
+            dfs(target, word.plus(alphabets[i]), idx, alphabets)
         }
     }
 
     fun solution(word: String): Int {
-        val alphabets = listOf<Char>('A', 'E', 'I', 'O', 'U')
 
-        dfs(alphabets, "", word, 0)
+        dfs(word, "", 0, listOf('A', 'E', 'I', 'O', 'U'))
 
         return answer
     }
